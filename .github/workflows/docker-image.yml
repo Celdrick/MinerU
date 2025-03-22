@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file docker/example/Dockerfile --tag jianjungki/mineru:latest --tag registry.cn-hangzhou.aliyuncs.com/jianjungki/mineru:latest
+      run: docker build . --file docker/example/Dockerfile --tag celdrick/mineru:latest --tag registry.cn-hangzhou.aliyuncs.com/chris_sync/mineru:latest
       
    # 设置 Docker Hub 凭据
     - name: Log in to Docker Hub
@@ -26,7 +26,7 @@ jobs:
 
     # 推送 Docker 镜像到 Docker Hub
     - name: Push Docker image for mineru
-      run: docker push jianjungki/mineru:latest
+      run: docker push celdrick/mineru:latest
     
     # 设置 Docker Hub 凭据
     - name: Log in to Aliyun Docker Hub
@@ -34,8 +34,8 @@ jobs:
       with:
         username: ${{ secrets.ALIYUN_DOCKER_HUB_USERNAME }}
         password: ${{ secrets.ALIYUN_DOCKER_HUB_ACCESS_TOKEN }}
-        registry: registry.cn-hangzhou.aliyuncs.com/jianjungki/mineru
+        registry: registry.cn-hangzhou.aliyuncs.com/chris_sync/mineru
 
     # 推送 Docker 镜像到 Docker Hub
     - name: Push Aliyun Docker image for mineru
-      run: docker push registry.cn-hangzhou.aliyuncs.com/jianjungki/mineru:latest
+      run: docker push registry.cn-hangzhou.aliyuncs.com/chris_sync/mineru:latest
